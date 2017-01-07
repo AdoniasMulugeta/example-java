@@ -24,6 +24,8 @@ public class Verification {
         // We need the product's public key to verify the signature returned by the Enverido licence server.
         // For the Java library, we need to use the PKCS #1 public key, WITHOUT the --- BEGIN ... --- and --- END ... ---
         // header/footer. If this isn't entered correctly we won't be able to verify licences.
+        //
+        // The product's public key is available on its page within the Enverido Web UI
         String productPublicKey = "MIGJAoGBAN/cgylbD9A7R2fbuyaYuMisX0I9QfLvKGyhfIrPpOrkMeN3PlQGDYGSTBWZmpaCH2lwWZco1+ziNZwqtJxmjrNIF6UZu44fjx7d7KgIFNNXuzO2j2OlqNmfoJSIE+uFNYncrdQWSzoaR2ELzkpfZlLlfgviIMPxYPXq0DN3lYBRAgMBAAE=";
 
         // Setup a scanner to get some input from the user.
