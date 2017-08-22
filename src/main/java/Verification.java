@@ -14,6 +14,8 @@ import java.security.SignatureException;
 import java.security.cert.CertificateException;
 import java.util.Scanner;
 
+import static com.enverido.java.licences.Licence.activate;
+
 public class Verification {
 
     public static void main(String[] args) {
@@ -68,6 +70,18 @@ public class Verification {
             licenceToVerify.setEmail(licenceEmail);
             licenceToVerify.setHardwareIdentifier(licenceHIdentifier);
 
+            // Try activating
+            System.out.println("-------------------------");
+            System.out.println("Activation in progress...");
+            System.out.println("-------------------------");
+
+            try {
+                boolean activation = Licence.activate(licenceToVerify, api);
+                System.out.println("Activation succeeded? " + activation);
+            } catch(Exception ex) {
+                System.out.println("Activation failed! This will happen if the licence has already been activated!");
+            }
+
             // Print out a message as it might take a second or two to verify the licence with the Enverido server
             System.out.println("Verifying licence... Please wait...");
 
@@ -78,7 +92,7 @@ public class Verification {
         } catch(Exception ex) {
             // An exception is typically thrown if there was a problem with the user input. For example
             // if a shortcode that doesn't exist is entered.
-            System.err.println("An error occured! Did you enter the correct licence shortcode?");
+            System.err.println("An error occurred! Did you enter the correct licence shortcode?");
         }
 
     }
